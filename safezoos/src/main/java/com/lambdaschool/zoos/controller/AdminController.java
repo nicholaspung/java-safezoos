@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -21,6 +22,7 @@ public class AdminController
     @Autowired
     ZooService zooService;
 
+//    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PutMapping(value = "/zoos/{id}",
                 produces = {"application/json"},
                 consumes = {"application/json"})
@@ -35,6 +37,7 @@ public class AdminController
     }
 
     // POST localhost:2019/admin/zoos
+//    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping(value = "/zoos",
                  consumes = {"application/json"},
                  produces = {"application/json"})
@@ -53,7 +56,7 @@ public class AdminController
         return new ResponseEntity<>(null, responseHeaders, HttpStatus.CREATED);
     }
 
-
+//    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @DeleteMapping(value = "/zoos/{zooid}")
     public ResponseEntity<?> deleteZooById(
             @PathVariable
@@ -63,6 +66,7 @@ public class AdminController
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+//    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @DeleteMapping(value = "/zoos/{zooid}/animals/{animalid}")
     public ResponseEntity<?> deleteZooAnimalCombo(
             @PathVariable("zooid")
@@ -75,6 +79,7 @@ public class AdminController
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+//    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping(value = "/zoos/{zooid}/animals/{animalid}")
     public ResponseEntity<?> saveZooAnimalCombo(HttpServletRequest request,
             @PathVariable("zooid")

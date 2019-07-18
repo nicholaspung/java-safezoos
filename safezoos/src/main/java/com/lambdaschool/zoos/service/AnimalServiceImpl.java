@@ -2,7 +2,7 @@ package com.lambdaschool.zoos.service;
 
 import com.lambdaschool.zoos.model.Animal;
 import com.lambdaschool.zoos.repository.AnimalRepository;
-import com.lambdaschool.zoos.view.JustTheCount;
+import com.lambdaschool.zoos.view.CountAnimalsInZoo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,7 +36,9 @@ public class AnimalServiceImpl implements AnimalService
     }
 
     @Override
-    public ArrayList<JustTheCount> getAnimalsWithZooCounts() {
-        return animalrepos.getAnimalsWithZooCounts();
+    public ArrayList<CountAnimalsInZoo> getAnimalsWithZooCounts() {
+        ArrayList<CountAnimalsInZoo> list = new ArrayList<>();
+        animalrepos.getAnimalsWithZooCounts().iterator().forEachRemaining(list::add);
+        return list;
     }
 }

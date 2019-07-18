@@ -1,6 +1,6 @@
 package com.lambdaschool.zoos.service;
 
-import com.lambdaschool.authenticatedusers.model.Role;
+import com.lambdaschool.zoos.model.Role;
 
 import java.util.List;
 

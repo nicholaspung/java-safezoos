@@ -33,6 +33,6 @@ public class ZooController
     @GetMapping(value = "/{name}", produces = {"application/json"})
     public ResponseEntity<?> listZooBasedOnName(@PathVariable String name) {
         Zoo zoo = zooService.findZooByName(name);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(zoo, HttpStatus.OK);
     }
 }

@@ -1,6 +1,6 @@
 package com.lambdaschool.zoos.service;
 
-import com.lambdaschool.zoos.model.Quote;
+//import com.lambdaschool.zoos.model.Quote;
 import com.lambdaschool.zoos.model.User;
 import com.lambdaschool.zoos.model.UserRoles;
 import com.lambdaschool.zoos.repository.RoleRepository;
@@ -81,10 +81,10 @@ public class UserServiceImpl implements UserDetailsService, UserService
         }
         newUser.setUserRoles(newRoles);
 
-        for (Quote q : user.getQuotes())
-        {
-            newUser.getQuotes().add( new Quote(q.getQuote(), newUser));
-        }
+//        for (Quote q : user.getQuotes())
+//        {
+//            newUser.getQuotes().add( new Quote(q.getQuote(), newUser));
+//        }
 
         return userrepos.save(newUser);
     }
@@ -139,13 +139,13 @@ public class UserServiceImpl implements UserDetailsService, UserService
                     }
                 }
 
-                if (user.getQuotes().size() > 0)
-                {
-                    for (Quote q : user.getQuotes())
-                    {
-                        currentUser.getQuotes().add( new Quote(q.getQuote(), currentUser));
-                    }
-                }
+//                if (user.getQuotes().size() > 0)
+//                {
+//                    for (Quote q : user.getQuotes())
+//                    {
+//                        currentUser.getQuotes().add( new Quote(q.getQuote(), currentUser));
+//                    }
+//                }
                 return userrepos.save(currentUser);
             }
             else
